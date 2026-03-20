@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Maxura Agency — More Leads. More Jobs. More Revenue.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #EFEAE4;
+      --text:     #2B2B2B;
+      --accent:   #E89B5A;
+      --accent2:  #C97D3D;
+      --muted:    #8a8179;
+      --light:    #F7F3EE;
+      --border:   rgba(43,43,43,0.10);
+      --ff-head:  'Cormorant Garamond', Georgia, serif;
+      --ff-body:  'DM Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--ff-body);
+      font-weight: 300;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 22px 60px;
+      background: rgba(239,234,228,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: var(--ff-head);
+      font-size: 1.45rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-cta {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 11px 26px;
+      border-radius: 50px;
+      font-family: var(--ff-body);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.25s, transform 0.2s;
+    }
+    .nav-cta:hover { background: var(--accent2); transform: translateY(-1px); }
+
+    /* ── SHARED ── */
+    .container { max-width: 1080px; margin: 0 auto; padding: 0 40px; }
+    .section { padding: 110px 0; }
+    .tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+    h1, h2, h3 { font-family: var(--ff-head); font-weight: 400; line-height: 1.18; }
+    h1 { font-size: clamp(2.6rem, 5.5vw, 4.2rem); }
+    h2 { font-size: clamp(2rem, 3.5vw, 3rem); }
+    h3 { font-size: 1.5rem; }
+
+    .btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      padding: 18px 42px;
+      border-radius: 50px;
+      font-family: var(--ff-body);
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+      border: none;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background: var(--accent2);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(232,155,90,0.30);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid var(--text);
+      color: var(--text);
+    }
+    .btn-outline:hover {
+      background: var(--text);
+      color: var(--bg);
+      box-shadow: none;
+    }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: 100px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg-shape {
+      position: absolute;
+      top: -120px; right: -160px;
+      width: 640px; height: 640px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(232,155,90,0.13) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--light);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      padding: 8px 18px;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 36px;
+    }
+    .hero-badge-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.3); }
+    }
+    .hero-headline { max-width: 800px; margin-bottom: 24px; }
+    .hero-headline em {
+      font-style: italic;
+      color: var(--accent);
+    }
+    .hero-sub {
+      max-width: 520px;
+      font-size: 1.05rem;
+      color: var(--muted);
+      margin-bottom: 44px;
+      line-height: 1.75;
+    }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+    .hero-note {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 20px;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .hero-note::before { content: '✓'; color: var(--accent); font-weight: 600; }
+    .hero-stats {
+      display: flex; gap: 48px;
+      margin-top: 80px;
+      padding-top: 48px;
+      border-top: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+    .stat-num {
+      font-family: var(--ff-head);
+      font-size: 2.6rem;
+      font-weight: 300;
+      color: var(--text);
+      line-height: 1;
+    }
+    .stat-num span { color: var(--accent); }
+    .stat-label { font-size: 0.8rem; color: var(--muted); margin-top: 6px; letter-spacing: 0.04em; }
+
+    /* ── DIVIDER ── */
+    .divider { width: 48px; height: 2px; background: var(--accent); margin: 28px 0; }
+
+    /* ── PROBLEM ── */
+    #problem { background: var(--light); }
+    .problem-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      margin-top: 60px;
+    }
+    .problem-items { display: flex; flex-direction: column; gap: 28px; }
+    .problem-item {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      padding: 28px;
+      background: var(--bg);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      transition: transform 0.2s, box-shadow 0.25s;
+    }
+    .problem-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 40px rgba(43,43,43,0.07);
+    }
+    .problem-icon {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      background: rgba(232,155,90,0.12);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      font-size: 1.1rem;
+    }
+    .problem-item h3 {
+      font-family: var(--ff-body);
+      font-size: 1rem;
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+    .problem-item p { font-size: 0.88rem; color: var(--muted); line-height: 1.65; }
+    .problem-right h2 { margin-bottom: 20px; }
+    .problem-right p { color: var(--muted); font-size: 0.98rem; line-height: 1.8; }
+
+    /* ── SOLUTION ── */
+    #solution .solution-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .solution-inner h2 { margin-bottom: 20px; }
+    .solution-inner > p { color: var(--muted); font-size: 1rem; line-height: 1.9; margin-bottom: 60px; }
+    .solution-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      text-align: left;
+    }
+    .sol-card {
+      background: var(--light);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px 28px;
+      transition: transform 0.2s, box-shadow 0.25s;
+    }
+    .sol-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 50px rgba(43,43,43,0.08);
+    }
+    .sol-card-icon {
+      font-size: 1.6rem;
+      margin-bottom: 20px;
+      display: block;
+    }
+    .sol-card h3 {
+      font-family: var(--ff-body);
+      font-size: 1rem;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+    .sol-card p { font-size: 0.86rem; color: var(--muted); line-height: 1.7; }
+
+    /* ── HOW IT WORKS ── */
+    #how { background: var(--light); }
+    .steps-wrap { margin-top: 60px; position: relative; }
+    .steps-wrap::before {
+      content: '';
+      position: absolute;
+      top: 36px; left: 35px;
+      width: 2px;
+      height: calc(100% - 72px);
+      background: linear-gradient(to bottom, var(--accent), transparent);
+    }
+    .step {
+      display: flex;
+      gap: 36px;
+      align-items: flex-start;
+      margin-bottom: 52px;
+    }
+    .step:last-child { margin-bottom: 0; }
+    .step-num {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--ff-head);
+      font-size: 1.8rem;
+      font-weight: 400;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 8px 24px rgba(232,155,90,0.30);
+    }
+    .step-body h3 {
+      font-family: var(--ff-body);
+      font-size: 1.15rem;
+      font-weight: 500;
+      margin-bottom: 10px;
+      margin-top: 18px;
+    }
+    .step-body p { font-size: 0.92rem; color: var(--muted); max-width: 520px; line-height: 1.75; }
+
+    /* ── GUARANTEE ── */
+    #guarantee { text-align: center; }
+    .guarantee-box {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 64px 56px;
+      background: var(--text);
+      border-radius: 28px;
+      color: var(--bg);
+      position: relative;
+      overflow: hidden;
+    }
+    .guarantee-box::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 260px; height: 260px;
+      border-radius: 50%;
+      background: rgba(232,155,90,0.14);
+    }
+    .guarantee-box .tag { color: var(--accent); }
+    .guarantee-box h2 { color: var(--bg); font-size: clamp(1.7rem, 3vw, 2.4rem); margin-bottom: 24px; position: relative; }
+    .guarantee-box p { color: rgba(239,234,228,0.65); font-size: 0.95rem; line-height: 1.85; position: relative; }
+    .guarantee-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    /* ── FINAL CTA ── */
+    #cta { text-align: center; }
+    .cta-inner { max-width: 600px; margin: 0 auto; }
+    .cta-inner h2 { margin-bottom: 18px; }
+    .cta-inner p { color: var(--muted); margin-bottom: 42px; font-size: 1rem; line-height: 1.8; }
+    .cta-perks {
+      display: flex; flex-direction: column; gap: 10px;
+      margin-bottom: 44px;
+      text-align: left;
+      max-width: 380px; margin: 0 auto 44px;
+    }
+    .cta-perk {
+      display: flex; align-items: center; gap: 12px;
+      font-size: 0.88rem; color: var(--muted);
+    }
+    .cta-perk::before { content: '✓'; color: var(--accent); font-weight: 600; font-size: 1rem; flex-shrink: 0; }
+
+    /* ── FOOTER ── */
+    footer {
+  padding: 36px 60px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;   /* 🔥 THIS LINE ADDED */
+  align-items: center;      /* center everything */
+  justify-content: center;
+  gap: 10px;                /* space between lines */
+}
+    .footer-logo {
+      font-family: var(--ff-head);
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .footer-logo span { color: var(--accent); }
+    footer p { font-size: 0.78rem; color: var(--muted); }
+
+    /* ── FADE IN ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 800px) {
+      nav { padding: 18px 24px; }
+      .container { padding: 0 24px; }
+      .section { padding: 80px 0; }
+      .problem-grid { grid-template-columns: 1fr; gap: 40px; }
+      .solution-cards { grid-template-columns: 1fr; }
+      .steps-wrap::before { display: none; }
+      .hero-stats { gap: 32px; }
+      .guarantee-box { padding: 44px 32px; }
+      footer { flex-direction: column; text-align: center; padding: 28px 24px; }
+    }
+    @media (max-width: 520px) {
+      h1 { font-size: 2.2rem; }
+      .hero-actions { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#" style="display:flex; align-items:center; gap:8px;">
+  <img src="assets/logo.png" style="width:60px; height:0px;">
+  Maxura Agency<span>.</span>
+</a>
+  <a class="nav-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSfhJ7bgWBY0xZHBKtumaB69StI7SdokTVeojglwnD74kcGPuQ/viewform?usp=publish-editor" target="_blank">Book Free Call</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-shape"></div>
+  <div class="container">
+    <div class="hero-badge">
+      <span class="hero-badge-dot"></span>
+      Exclusive to Kitchen & Bathroom Remodelers
+    </div>
+    <h1 class="hero-headline fade-up">
+      Get 20-40 High-Ticket Remodeling Leads<br>
+      <em>Every Month - Without Relying on</em><br>
+      Referrals and Word-of-mouth
+    </h1>
+    <p class="hero-sub fade-up">
+      We build a predictable lead generation system using paid ads + conversion funnels - so you always have homeowners ready to start projects.
+    </p>
+    <div class="hero-actions fade-up">
+      <a href="#cta" class="btn">Get My Free Lead Plan</a>
+      <a href="#how" class="btn btn-outline">See How It Works</a>
+    </div>
+    <p class="hero-note fade-up">No commitment. In 30 minutes, you'll know exactly how many leads you can generate.</p>
+    <div class="hero-stats fade-up">
+      <div>
+        <div class="stat-num">40<span>+</span></div>
+        <div class="stat-label">Leads per month, guaranteed</div>
+      </div>
+      <div>
+        <div class="stat-num">30<span>-day</span></div>
+        <div class="stat-label">Results or we work free</div>
+      </div>
+      <div>
+        <div class="stat-num">100<span>%</span></div>
+        <div class="stat-label">Focused on remodelers</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section id="problem" class="section">
+  <div class="container">
+    <div class="problem-grid">
+      <div class="problem-items">
+        <div class="problem-item fade-up">
+          <div class="problem-icon">📉</div>
+          <div>
+            <h3>Leads are inconsistent</h3>
+            <p>Some months are great. Others are dead quiet. You have no reliable way to predict how many jobs are coming in.</p>
+          </div>
+        </div>
+        <div class="problem-item fade-up">
+          <div class="problem-icon">🤝</div>
+          <div>
+            <h3>Relying on referrals</h3>
+            <p>Word-of-mouth is great — until it dries up. You can't scale a business on something you can't control.</p>
+          </div>
+        </div>
+        <div class="problem-item fade-up">
+          <div class="problem-icon">📊</div>
+          <div>
+            <h3>Unpredictable revenue</h3>
+            <p>Without a steady lead pipeline, forecasting revenue is impossible. Growth stays out of reach.</p>
+          </div>
+        </div>
+      </div>
+      <div class="problem-right fade-up">
+        <span class="tag">The problem</span>
+        <div class="divider"></div>
+        <h2>If your pipeline feels unpredictable, this is why:</h2>
+        <p>
+          Most remodeling businesses rely on referrals and Word-of-mouth.The problem? It's inconsistent,unpredictable, and impossible to scale.  
+          <br><br>
+          The companies growing fast today aren't better contractors - they just have a system that brings in leads every single month.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section id="solution" class="section">
+  <div class="container">
+    <div class="solution-inner">
+      <span class="tag fade-up">The solution</span>
+      <h2 class="fade-up">A Predictable Lead Generation System Built for Remodelers</h2>
+      <p class="fade-up">
+        We combine highly targeted ads with a conversion-focused funnel that turns clicks into booked appointments.
+
+        You focus on closing deals and delivering great work — we handle bringing in qualified homeowners.
+      </p>
+      <div class="solution-cards">
+        <div class="sol-card fade-up">
+          <span class="sol-card-icon">🎯</span>
+          <h3>Precision-Targeted Ads</h3>
+          <p>We reach homeowners in your area who are actively looking to remodel — not just browsing. No wasted budget.</p>
+        </div>
+        <div class="sol-card fade-up">
+          <span class="sol-card-icon">⚡</span>
+          <h3>High-Converting Funnels</h3>
+          <p>Custom landing pages and follow-up sequences that turn ad clicks into booked consultations — automatically.</p>
+        </div>
+        <div class="sol-card fade-up">
+          <span class="sol-card-icon">📅</span>
+          <h3>Qualified Appointments</h3>
+          <p>Every lead is pre-qualified. You only speak with homeowners who are serious, local, and ready to invest.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how" class="section">
+  <div class="container">
+    <span class="tag fade-up">The process</span>
+    <h2 class="fade-up">How It Works</h2>
+    <p class="fade-up" style="color: var(--muted); max-width: 480px; margin-top: 12px; font-size: 0.96rem; line-height: 1.8;">
+      Three simple steps. We handle steps one and two. You just show up and close.
+    </p>
+    <div class="steps-wrap">
+      <div class="step fade-up">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>We Run Targeted Facebook & Instagram Ads</h3>
+          <p>We run highly targeted ads to reach homeowners in your area actively planning a remodel.</p>
+        </div>
+      </div>
+      <div class="step fade-up">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>Leads Fill a Simple, Qualifying Form</h3>
+          <p>Leads go through a short qualification process so only serious, high-quality prospects reach you.</p>
+        </div>
+      </div>
+      <div class="step fade-up">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>You Close Deals & Grow Your Business</h3>
+          <p> You get booked calls with ready-to-buy homeowners and close more high-ticket projects..</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GUARANTEE -->
+<section id="guarantee" class="section">
+  <div class="container">
+    <div class="guarantee-box fade-up">
+      <span class="guarantee-icon">🛡️</span>
+      <span class="tag">Our guarantee</span>
+      <h2>"If we don’t generate at least 20 qualified leads in your first 30 days, we’ll keep working for free until we do."</h2>
+      <p>No vague promises. No fine print. We put our work where our words are — because we know the system works.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section id="cta" class="section">
+  <div class="container">
+    <div class="cta-inner">
+      <span class="tag fade-up">Ready to grow?</span>
+      <h2 class="fade-up">See How Many Leads You Can Generate In Your Area</h2>
+      <p class="fade-up">We’ll map out a custom lead generation plan for your business based on your location, services, and market demand. </p>
+      <div class="cta-perks fade-up">
+        <div class="cta-perk">Completely free, no strings attached</div>
+        <div class="cta-perk">Custom strategy built for your market</div>
+        <div class="cta-perk">Results guaranteed or we work free</div>
+      </div>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSfhJ7bgWBY0xZHBKtumaB69StI7SdokTVeojglwnD74kcGPuQ/viewform?usp=publish-editor" target="_blank" rel="noopener" class="btn fade-up" style="font-size: 1rem; padding: 20px 52px;">
+        Get My Free Lead Plan
+      </a>
+      <p class="fade-up" style="margin-top: 20px; font-size: 0.78rem; color: var(--muted);">We’re currently onboarding only 3 remodeling businesses this month.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo" style="display:flex; align-items:center; gap:8px;">
+  <img src="assets/logo.png" style="width:60px; height:60px;">
+  Maxura Agency<span>.</span>
+</div>
+  <p>© 2026 Maxura Agency. All rights reserved.</p>
+  <p style="font-size: 0.75rem;">Serving remodeling businesses worldwide</p>
+</footer>
+
+<script>
+  // Fade-up on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        entry.target.style.transitionDelay = (i * 0.07) + 's';
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Stagger children within same parent
+  document.querySelectorAll('.problem-items, .solution-cards, .steps-wrap').forEach(parent => {
+    const children = parent.querySelectorAll('.fade-up');
+    children.forEach((child, i) => {
+      child.style.transitionDelay = (i * 0.12) + 's';
+    });
+  });
+</script>
+</body>
+</html>
